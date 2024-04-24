@@ -15,18 +15,27 @@
 
 <body>
 
+
+    
     <div class="container mt-3">
         <div class="row">
+            <% @posts.each do |post| %>
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Card 1</h5>
-                        <p class="card-text">This is the first card.</p>
+                        <h5 class="card-title"><%= post.title %></h5>
+                        <p class="card-text"><%= post.body %></p>
                         <a href="#" class="card-link">Edit</a>
                         <a href="#" class="card-link">Delete</a>
+                        <%= link_to "Destroy", article_path(@post), data: {
+                            turbo_method: :delete,
+                            turbo_confirm: "Are you sure?"
+                          } %>
                     </div>
                 </div>
             </div>
+            <% end %>
+
         </div>
     </div>
 
