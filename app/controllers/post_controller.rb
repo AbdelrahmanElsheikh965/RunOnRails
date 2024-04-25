@@ -4,7 +4,7 @@ class PostController < ApplicationController
     end
   
     def show
-      @post = Post.find(params[:id])
+      @post = Post.find_by(id: params[:id])
     end
   
     def new
@@ -14,7 +14,6 @@ class PostController < ApplicationController
     def create
         # puts "Here are the params sent : ----------#{}"
       @post = Post.new({title: params[:post][:title], body: params[:post][:body]})
-  
       if @post.save
         redirect_to "/posts"
       else
@@ -29,7 +28,6 @@ class PostController < ApplicationController
   
     def update
       @post = Post.find(params[:id])
-  
       if @post.update(post_params)
         redirect_to @post
       else
@@ -38,15 +36,17 @@ class PostController < ApplicationController
     end
   
     def destroy
-      @post = Post.find(params[:id])
-      @post.destroy
-  
-      redirect_to root_path, status: :see_other
+      @post = Post.where(id: params[:id]).first
+      if @post.destroy
+        redirect_to post_path
+      else
+        
+      end
     end
   
-    # private
-    #   def post_params
-    #     params.require(:post).permit(:title, :body)
-    #   end
+    private
+      def post_params
+        params.require(:post).permit(:title, :body)
+      end
   end
   
