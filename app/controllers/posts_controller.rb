@@ -1,10 +1,10 @@
-class PostController < ApplicationController
+class PostsController < ApplicationController
     def index
       @posts = Post.all
     end
   
     def show
-      @post = Post.find_by(id: params[:id])
+
     end
   
     def new
@@ -29,7 +29,7 @@ class PostController < ApplicationController
     def update
       @post = Post.find(params[:id])
       if @post.update(post_params)
-        redirect_to @post
+        redirect_to "/posts"
       else
         render :edit, status: :unprocessable_entity
       end

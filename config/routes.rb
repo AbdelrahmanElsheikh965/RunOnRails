@@ -8,14 +8,25 @@ Rails.application.routes.draw do
 
   # get '/posts', to: 'post#index'
   # post '/posts', to: 'post#create'
-  # get '/posts/new', to: 'post#new'
+  # get '/posts/new', to: 'post#new' , as: 'new_post'
   
   # get '/posts/edit/:id', to: 'post#edit'
   # put '/posts/update/:id', to: 'post#update'
   # delete '/posts/destroy/:id', to: 'post#destroy', as: 'delete_post' 
   # delete '/posts/:id', to: 'posts#destroy', as: 'delete_post'
 
-  resources :post
+  resources :posts
+
+=begin
+  post_index GET    /post(.:format)                                                                                   post#index
+            POST   /post(.:format)                                                                                   post#create
+  new_post GET     /post/new(.:format)                                                                               post#new
+  edit_post GET    /post/:id/edit(.:format)                                                                          post#edit
+      post GET     /post/:id(.:format)                                                                               post#show
+            PATCH  /post/:id(.:format)                                                                               post#update
+            PUT    /post/:id(.:format)                                                                               post#update
+            DELETE /post/:id(.:format)                                                                               post#destroy
+=end
 
   # Defines the root path route ("/")
   # root "posts#index"
