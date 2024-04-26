@@ -30,7 +30,7 @@
                                 <%= post.body %>
                             </p>
                             <%= link_to 'Edit', edit_post_path(post.id)%> 
-                            <%= link_to 'Delete', post_path(post), method: :delete %>
+                            <%= link_to 'Delete', post_path(post.id), method: :delete %>
                             
                         </div>
                     </div>

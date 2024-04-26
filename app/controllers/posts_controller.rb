@@ -4,7 +4,12 @@ class PostsController < ApplicationController
     end
   
     def show
+      @post = Post.where(id: params[:id]).first
+      if @post.destroy
+        redirect_to "/posts"
+      else
 
+      end
     end
   
     def new
@@ -38,7 +43,7 @@ class PostsController < ApplicationController
     def destroy
       @post = Post.where(id: params[:id]).first
       if @post.destroy
-        redirect_to post_path
+        redirect_to "/posts"
       else
         
       end
