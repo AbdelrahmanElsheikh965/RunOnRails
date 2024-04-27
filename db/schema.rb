@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_27_110556) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_27_120636) do
+  create_table "Emojis_Posts", id: false, force: :cascade do |t|
+    t.integer "Post_id", null: false
+    t.integer "Emoji_id", null: false
+  end
+
   create_table "authors", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "emojis", force: :cascade do |t|
+    t.text "shape"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
